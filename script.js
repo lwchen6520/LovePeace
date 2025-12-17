@@ -299,6 +299,8 @@ const solarTerms = [
   },
 ];
 
+let currentSolarResults = solarTerms;
+
 const practiceLibrary = [
   {
     title: "方盒呼吸",
@@ -535,39 +537,46 @@ function renderSolarGrid(list = solarTerms) {
   });
 }
 
-function renderSolarDetail(term = solarTerms[0]) {
-  if (!term) return;
+function renderSolarDetail(term, list = solarTerms) {
+  const source = list && list.length ? list : solarTerms;
+  const selected = term || source[0];
   const container = document.getElementById("solar-detail");
+
+  if (!selected) {
+    container.innerHTML = `<div class="detail-empty">目前沒有符合條件的節氣，調整篩選再看看。</div>`;
+    return;
+  }
+
   container.innerHTML = `
-    <h3>${term.name} · ${term.range}</h3>
-    <p>${term.detail.climate}</p>
+    <h3>${selected.name} · ${selected.range}</h3>
+    <p>${selected.detail.climate}</p>
     <div class="detail-grid">
       <div>
         <p class="label">身體訊號</p>
-        <ul>${term.detail.bodySignals.map((s) => `<li>${s}</li>`).join("")}</ul>
+        <ul>${selected.detail.bodySignals.map((s) => `<li>${s}</li>`).join("")}</ul>
       </div>
       <div>
         <p class="label">心的訊號</p>
-        <ul>${term.detail.heartSignals.map((s) => `<li>${s}</li>`).join("")}</ul>
+        <ul>${selected.detail.heartSignals.map((s) => `<li>${s}</li>`).join("")}</ul>
       </div>
     </div>
     <div class="detail-grid">
       <div>
         <p class="label">今日練習 5–8 分鐘</p>
-        <ol>${term.detail.practices.short.map((s) => `<li>${s}</li>`).join("")}</ol>
+        <ol>${selected.detail.practices.short.map((s) => `<li>${s}</li>`).join("")}</ol>
       </div>
       <div>
         <p class="label">今日練習 10–15 分鐘</p>
-        <ol>${term.detail.practices.long.map((s) => `<li>${s}</li>`).join("")}</ol>
+        <ol>${selected.detail.practices.long.map((s) => `<li>${s}</li>`).join("")}</ol>
       </div>
     </div>
     <div>
       <p class="label">常見偏誤與溫柔提醒</p>
-      <ul>${term.detail.reminders.map((r) => `<li>${r}</li>`).join("")}</ul>
+      <ul>${selected.detail.reminders.map((r) => `<li>${r}</li>`).join("")}</ul>
     </div>
     <div class="card" style="margin-top:12px; background: rgba(255,255,255,0.85);">
       <p class="eyebrow">節氣卡</p>
-      <p>${term.detail.card}</p>
+      <p>${selected.detail.card}</p>
     </div>
   `;
 }
@@ -580,8 +589,9 @@ function filterSolar() {
   if (body !== "all") filtered = filtered.filter((t) => t.body === body);
   if (emotion !== "all") filtered = filtered.filter((t) => t.emotion === emotion);
   if (duration !== "all") filtered = filtered.filter((t) => `${t.duration}` === duration);
+  currentSolarResults = filtered;
   renderSolarGrid(filtered);
-  renderSolarDetail(filtered[0]);
+  renderSolarDetail(filtered[0], filtered);
 }
 
 function renderLibrary(list = practiceLibrary) {
@@ -660,7 +670,7 @@ function registerEvents() {
   document.getElementById("solar-grid").addEventListener("click", (e) => {
     if (e.target.matches("button[data-term]")) {
       const term = solarTerms.find((t) => t.id === e.target.dataset.term);
-      renderSolarDetail(term);
+      renderSolarDetail(term, currentSolarResults);
     }
   });
 
@@ -690,6 +700,7 @@ function init() {
   renderPracticeCard();
   renderSolarFilters();
   renderSolarGrid();
+  currentSolarResults = solarTerms;
   renderSolarDetail();
   renderLibrary();
   renderWriting();

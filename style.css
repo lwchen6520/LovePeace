@@ -242,6 +242,14 @@ textarea {
   margin-top: 0;
 }
 
+.detail-empty {
+  padding: 14px 16px;
+  color: #40505a;
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 12px;
+  border: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
 .detail-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
