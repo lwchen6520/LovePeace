@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liv Jaijot Kaur | Daily Practice</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-pattern" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="logo">Liv Jaijot Kaur</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#daily">Daily Practice</a>
+      <a href="#solar">Solar Terms</a>
+      <a href="#library">Practice Library</a>
+      <a href="#about">About</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero reveal">
+      <div class="hero-text">
+        <p class="tagline-zh">把修行變成日常，把日常變成修行。</p>
+        <p class="tagline-en">Practice daily. Live gently. Stay grounded.</p>
+        <p class="daily-reminder">每個當下都可回到身體。先停一口氣，讓肩膀鬆下來，聽見胸腔的空間。再小步調整：用覺知取代衝動，用柔和取代用力。練習不是逃避，而是把自己帶回來。</p>
+        <div class="cta-group">
+          <a class="btn primary" href="#daily">開始今日練習</a>
+          <a class="btn ghost" href="#solar">依節氣探索</a>
+        </div>
+      </div>
+      <div class="hero-cards">
+        <div class="card reveal" data-target="#daily">
+          <h3>今日練習 Daily Practice</h3>
+          <p>呼吸、覺察、短冥想，依你狀態生成。</p>
+        </div>
+        <div class="card reveal" data-target="#solar">
+          <h3>節氣修行 Solar Terms</h3>
+          <p>24 節氣 × 身體感，跟著天地調息。</p>
+        </div>
+        <div class="card reveal" data-target="#writing">
+          <h3>修行筆記 Writing</h3>
+          <p>反思、方法、常見困惑的溫柔對話。</p>
+        </div>
+      </div>
+      <div class="method reveal">
+        <h4>我的方法</h4>
+        <div class="method-steps">
+          <div class="pill">Observe — 先看見自己的節奏，承認身體訊號。</div>
+          <div class="pill">Regulate — 用呼吸與姿勢微調，不需要完美。</div>
+          <div class="pill">Integrate — 把練習放進生活節奏，短但穩定。</div>
+          <div class="pill">Return — 迷路時回來，善待自己，不責備。</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="daily" class="section reveal">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Daily Practice</p>
+          <h2>每日練習卡生成器</h2>
+          <p class="section-desc">選擇你的時間、目的與身體狀態，我會為你生成可操作的練習卡。像每天早晨的暖身，輕巧但扎實。</p>
+        </div>
+        <button class="btn secondary" id="downloadCard">下載練習卡（即將提供）</button>
+      </div>
+      <div class="generator">
+        <div class="controls">
+          <label>時長
+            <select id="duration">
+              <option>5 分鐘</option>
+              <option>10 分鐘</option>
+              <option>15 分鐘</option>
+            </select>
+          </label>
+          <label>目的
+            <select id="purpose">
+              <option>安定</option>
+              <option>提神</option>
+              <option>放鬆</option>
+              <option>專注</option>
+              <option>睡前</option>
+            </select>
+          </label>
+          <label>身體狀態
+            <select id="bodyState">
+              <option>緊</option>
+              <option>疲憊</option>
+              <option>心浮</option>
+              <option>情緒多</option>
+              <option>頭腦過載</option>
+            </select>
+          </label>
+          <button class="btn primary" id="generate">生成練習卡</button>
+        </div>
+        <div class="practice-card" id="practiceCard">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">今日練習</p>
+              <h3 id="cardTitle">安定 × 5 分鐘</h3>
+            </div>
+            <span class="chip" id="cardMood">身體：緊</span>
+          </div>
+          <div class="card-body">
+            <div class="card-row">
+              <h4>準備</h4>
+              <p id="prep">找到一張穩固的椅子，雙腳踩地，關掉多餘通知。</p>
+            </div>
+            <div class="card-row">
+              <h4>呼吸指引</h4>
+              <p id="breath">4-6 呼吸：吸氣數 4，吐氣數 6，保持脊椎微直。</p>
+            </div>
+            <div class="card-row">
+              <h4>觀照提示</h4>
+              <p id="observe">留意肩頸放鬆時的暖意，讓視線柔焦，心跳漸穩。</p>
+            </div>
+            <div class="card-row">
+              <h4>結束語</h4>
+              <p id="closing">把手心覆在胸前，說聲謝謝自己停下來。</p>
+            </div>
+            <div class="card-row caution">
+              <h4>注意事項</h4>
+              <p id="notes">若有暈眩，回到自然呼吸；不需追求深度，只要穩定。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="solar" class="section reveal">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Solar Terms</p>
+          <h2>節氣修行地圖</h2>
+          <p class="section-desc">用身體感解讀 24 節氣，調整呼吸、飲食與作息。每張卡片都有可立即實踐的短練習。</p>
+        </div>
+        <div class="filters">
+          <select id="filterBody">
+            <option value="all">身體主題</option>
+            <option value="肺">肺</option>
+            <option value="脾">脾</option>
+            <option value="肝">肝</option>
+            <option value="腎">腎</option>
+            <option value="心">心</option>
+          </select>
+          <select id="filterMood">
+            <option value="all">情緒主題</option>
+            <option value="安穩">安穩</option>
+            <option value="清明">清明</option>
+            <option value="鬆軟">鬆軟</option>
+            <option value="收斂">收斂</option>
+            <option value="滋養">滋養</option>
+          </select>
+          <select id="filterDuration">
+            <option value="all">時長</option>
+            <option value="3-5 分鐘">3-5 分鐘</option>
+            <option value="5-8 分鐘">5-8 分鐘</option>
+            <option value="8-12 分鐘">8-12 分鐘</option>
+          </select>
+        </div>
+      </div>
+      <div class="solar-grid" id="solarGrid"></div>
+      <div class="solar-detail" id="solarDetail">
+        <div class="card-header">
+          <div>
+            <p class="eyebrow" id="detailEyebrow">節氣詳頁</p>
+            <h3 id="detailTitle">選擇節氣以查看</h3>
+            <p id="detailRange"></p>
+          </div>
+          <span class="chip" id="detailTags"></span>
+        </div>
+        <div class="detail-content">
+          <div>
+            <h4>這個節氣的氣候與節奏</h4>
+            <p id="detailClimate">跟著節氣，找到你的呼吸節拍。</p>
+          </div>
+          <div class="signal-grid">
+            <div>
+              <h4>身體訊號</h4>
+              <ul id="bodySignals"></ul>
+            </div>
+            <div>
+              <h4>心的訊號</h4>
+              <ul id="mindSignals"></ul>
+            </div>
+          </div>
+          <div>
+            <h4>今日練習</h4>
+            <div class="practice-steps">
+              <div>
+                <p class="chip">5-8 分鐘</p>
+                <ol id="practiceShort"></ol>
+              </div>
+              <div>
+                <p class="chip">8-12 分鐘</p>
+                <ol id="practiceLong"></ol>
+              </div>
+            </div>
+          </div>
+          <div class="caution">
+            <h4>常見偏誤與溫柔提醒</h4>
+            <p id="detailReminders"></p>
+          </div>
+          <div class="share-card">
+            <p class="eyebrow">一張節氣卡</p>
+            <h4 id="shareTitle">靜候選擇</h4>
+            <p id="shareSummary">點擊上方節氣，生成可分享的卡片語。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="library" class="section reveal">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Practice Library</p>
+          <h2>練習庫</h2>
+          <p class="section-desc">按需求搜尋或用標籤篩選，找到最適合當下的呼吸與覺察練習。</p>
+        </div>
+        <div class="filters">
+          <input type="search" id="librarySearch" placeholder="搜尋練習..." />
+          <select id="libraryFilter">
+            <option value="all">全部類型</option>
+            <option>呼吸</option>
+            <option>身體掃描</option>
+            <option>慈心</option>
+            <option>專注</option>
+            <option>睡前</option>
+          </select>
+        </div>
+      </div>
+      <div class="library-grid" id="libraryGrid"></div>
+    </section>
+
+    <section id="about" class="section reveal">
+      <div class="section-heading">
+        <p class="eyebrow">About</p>
+        <h2>我的路徑</h2>
+      </div>
+      <div class="about-grid">
+        <div class="card">
+          <h3>我如何走向修行</h3>
+          <p>從科技專案到身心修習，長期失眠讓我開始學習呼吸法與瑜珈。發現身體記得最細微的提醒，也懂得用穩定的節奏療癒自己。</p>
+        </div>
+        <div class="card">
+          <h3>我如何把修行變成日常</h3>
+          <p>把練習拆成日常微步驟：晨間三分鐘呼吸、午間步行覺察、睡前身體掃描。少量、頻率高，才能融入行程而不增加負擔。</p>
+        </div>
+        <div class="card">
+          <h3>我如何陪伴初學者</h3>
+          <p>清楚界線：不診斷、不替代醫療，只提供實驗的場域。用專案管理的節奏陪伴，讓每個人都能找到自己的可持續方法。</p>
+        </div>
+      </div>
+      <div class="background-card">
+        <p class="eyebrow">我的背景（可信度補強）</p>
+        <p>PM / 系統設計 / 自動化流程。擅長把複雜概念拆解為步驟，讓修行在忙碌生活中也能被實踐。</p>
+      </div>
+    </section>
+
+    <section id="writing" class="section reveal">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Writing</p>
+          <h2>修行筆記</h2>
+          <p class="section-desc">節氣筆記、呼吸與覺察、修行困惑、生活整合。以故事和方法並行，讓練習更貼近日常。</p>
+        </div>
+        <input type="search" id="writingSearch" placeholder="搜尋筆記..." />
+      </div>
+      <div class="writing-grid" id="writingGrid"></div>
+    </section>
+
+    <section id="contact" class="section reveal">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>與我聯繫</h2>
+          <p class="section-desc">內容為身心練習分享，不替代專業醫療或心理治療。若你有醫療需求，請尋求專業協助。</p>
+        </div>
+      </div>
+      <form class="contact-form">
+        <label>你的名字
+          <input type="text" placeholder="你想怎麼被稱呼" required />
+        </label>
+        <label>電子郵件
+          <input type="email" placeholder="example@email.com" required />
+        </label>
+        <label>聯絡目的
+          <select>
+            <option>合作</option>
+            <option>授課</option>
+            <option>分享 / 交流</option>
+          </select>
+        </label>
+        <label>訊息
+          <textarea rows="4" placeholder="簡述你的需求與時間期望"></textarea>
+        </label>
+        <button type="button" class="btn primary">送出訊息</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2024 Liv Jaijot Kaur (Sonia Chen). Practice daily. Live gently. Stay grounded.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
