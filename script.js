@@ -396,6 +396,95 @@ const writings = [
   },
 ];
 
+const equilibriumPhotos = [
+  "imgi_30_Equilibrium_75.jpg",
+  "imgi_31_Equilibrium_76.jpg",
+  "imgi_32_Equilibrium_77.jpg",
+  "imgi_33_Equilibrium_78.jpg",
+  "imgi_34_Equilibrium_79.jpg",
+  "imgi_35_Equilibrium_80.jpg",
+  "imgi_36_Equilibrium_81.jpg",
+  "imgi_37_Equilibrium_82.jpg",
+  "imgi_38_Equilibrium_15.jpg",
+  "imgi_38_Equilibrium_45.jpg",
+  "imgi_38_Equilibrium_60.jpg",
+  "imgi_38_Equilibrium_83.jpg",
+  "imgi_38_Equilibrium_90.jpg",
+  "imgi_39_Equilibrium_0.jpg",
+  "imgi_39_Equilibrium_16.jpg",
+  "imgi_39_Equilibrium_61.jpg",
+  "imgi_39_Equilibrium_84.jpg",
+  "imgi_39_Equilibrium_91.jpg",
+  "imgi_40_Equilibrium_1.jpg",
+  "imgi_40_Equilibrium_17.jpg",
+  "imgi_40_Equilibrium_32.jpg",
+  "imgi_40_Equilibrium_47.jpg",
+  "imgi_40_Equilibrium_62.jpg",
+  "imgi_40_Equilibrium_85.jpg",
+  "imgi_40_Equilibrium_92.jpg",
+  "imgi_41_Equilibrium_18.jpg",
+  "imgi_41_Equilibrium_48.jpg",
+  "imgi_41_Equilibrium_63.jpg",
+  "imgi_41_Equilibrium_86.jpg",
+  "imgi_41_Equilibrium_93.jpg",
+  "imgi_42_Equilibrium_19.jpg",
+  "imgi_42_Equilibrium_3.jpg",
+  "imgi_42_Equilibrium_34.jpg",
+  "imgi_42_Equilibrium_49.jpg",
+  "imgi_42_Equilibrium_64.jpg",
+  "imgi_42_Equilibrium_87.jpg",
+  "imgi_42_Equilibrium_94.jpg",
+  "imgi_43_Equilibrium_20.jpg",
+  "imgi_43_Equilibrium_35.jpg",
+  "imgi_43_Equilibrium_4.jpg",
+  "imgi_43_Equilibrium_50.jpg",
+  "imgi_43_Equilibrium_88.jpg",
+  "imgi_44_Equilibrium_21.jpg",
+  "imgi_44_Equilibrium_36.jpg",
+  "imgi_44_Equilibrium_51.jpg",
+  "imgi_44_Equilibrium_66.jpg",
+  "imgi_44_Equilibrium_89.jpg",
+  "imgi_45_Equilibrium_22.jpg",
+  "imgi_45_Equilibrium_52.jpg",
+  "imgi_45_Equilibrium_6.jpg",
+  "imgi_45_Equilibrium_67.jpg",
+  "imgi_46_Equilibrium_23.jpg",
+  "imgi_46_Equilibrium_38.jpg",
+  "imgi_46_Equilibrium_53.jpg",
+  "imgi_46_Equilibrium_68.jpg",
+  "imgi_46_Equilibrium_98.jpg",
+  "imgi_47_Equilibrium_54.jpg",
+  "imgi_47_Equilibrium_69.jpg",
+  "imgi_47_Equilibrium_99.jpg",
+  "imgi_48_Equilibrium_100.jpg",
+  "imgi_48_Equilibrium_40.jpg",
+  "imgi_48_Equilibrium_55.jpg",
+  "imgi_48_Equilibrium_70.jpg",
+  "imgi_48_Equilibrium_9.jpg",
+  "imgi_49_Equilibrium_10.jpg",
+  "imgi_49_Equilibrium_41.jpg",
+  "imgi_49_Equilibrium_56.jpg",
+  "imgi_49_Equilibrium_71.jpg",
+  "imgi_50_Equilibrium_11.jpg",
+  "imgi_50_Equilibrium_27.jpg",
+  "imgi_50_Equilibrium_42.jpg",
+  "imgi_50_Equilibrium_57.jpg",
+  "imgi_51_Equilibrium_12.jpg",
+  "imgi_51_Equilibrium_58.jpg",
+  "imgi_51_Equilibrium_73.jpg",
+  "imgi_52_Equilibrium_13.jpg",
+  "imgi_52_Equilibrium_44.jpg",
+  "imgi_52_Equilibrium_59.jpg",
+  "imgi_52_Equilibrium_74.jpg",
+  "imgi_53_Equilibrium_14.jpg",
+].map((file) => {
+  const match = file.match(/Equilibrium_(\d+)/);
+  return {
+    file,
+    number: match ? match[1] : "",
+  };
+});
+
 function createPattern() {
   const svgNS = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS(svgNS, "svg");
@@ -661,6 +750,24 @@ function filterWriting() {
   renderWriting(filtered);
 }
 
+function renderEquilibriumGallery() {
+  const container = document.getElementById("equilibrium-gallery");
+  if (!container) return;
+  container.innerHTML = "";
+  equilibriumPhotos.forEach((photo) => {
+    const link = document.createElement("a");
+    link.className = "card gallery-item";
+    link.href = `images/aura-soma/equilibrium/${photo.file}`;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.innerHTML = `
+      <img src="images/aura-soma/equilibrium/${photo.file}" alt="Aura-Soma Equilibrium ${photo.number}" loading="lazy" />
+      <div class="gallery-caption">Equilibrium ${photo.number}</div>
+    `;
+    container.appendChild(link);
+  });
+}
+
 function registerEvents() {
   document.getElementById("generate").addEventListener("click", renderPracticeCard);
   document.getElementById("download-card").addEventListener("click", () => {
@@ -712,6 +819,7 @@ function init() {
   renderSolarDetail();
   renderLibrary();
   renderWriting();
+  renderEquilibriumGallery();
   registerEvents();
   setupReveal();
 }

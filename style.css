@@ -214,6 +214,33 @@ textarea {
   gap: 16px;
 }
 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 12px 24px rgba(31, 27, 22, 0.15);
+}
+
+.gallery-caption {
+  font-weight: 600;
+}
+
 .practice-card .label {
   font-weight: 700;
   margin-bottom: 4px;
